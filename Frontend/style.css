@@ -1,0 +1,101 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+.username{
+    color: white;
+}
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #34568B;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+  
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: linear-gradient(to right, #c00d0d, #fff265, #c00d0d, #fff265); */
+
+    }
+
+   
+    @media (min-width: 768px) {
+    .gradient-form {
+    height: 100vh !important;
+    }
+    }
+
+    /* Modify the background color */
+.bg{
+    background-color: #34568B ;
+    
+}
+
+.container {
+    padding: 2rem 0rem;
+  }
+  
+  h4 {
+    margin: 2rem 0rem 1rem;
+  }
+  
+  
+/* .tableHeader{
+    background-color: #212529;
+    color: white;
+} */
+
+.footer{
+    position:absolute;
+    bottom: 0px;
+    text-align: center;
+    text-align: start;
+    width: 100%;
+}
+
+.ip1{
+    width: 40px;
+    text-align: center;
+}
+
+.ip2{
+    width: 40px;
+    text-align: center;
+    color: #f50000;
+}
+.modal-title2{
+    font-size: x-large;
+    color: #34568B
+  
+    
+}
+
+.modal-title{
+    font-size: x-large;
+}
+
+.box1, .box2, .box3 {
+    float: left;
+    margin-right: 2.5%;
+    box-sizing: border-box;
+}
+
+.div{
+    margin-left: 6px;
+}
+
+.modal-header{
+    height: 100px;
+}
+
+
