@@ -26,7 +26,7 @@ function onNavToMain() {
 
   var Kundennummer = Number(document.getElementById('Kundennummer').value)
 
-  const data = { "Kundennummer": Kundennummer };
+  // const data = { "Kundennummer": Kundennummer };
 
   fetch('http://localhost:4000/findCustomer?Kundennummer=' + Kundennummer, {
     method: 'GET',

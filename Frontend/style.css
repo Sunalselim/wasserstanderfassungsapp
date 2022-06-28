@@ -97,5 +97,104 @@ height: 100%;
 .modal-header{
     height: 100px;
 }
+@media screen and (min-width: 992px) {
+
+    .navbar {
+    
+    padding: 0;
+    
+    }
+    
+    .navbar .navbar-nav .nav-link {
+    
+    padding: 1em 0;
+    
+    }
+    
+    .navbar .navbar-nav .nav-item {
+    
+    margin: 0 1em;
+    
+    }
+    
+    }
+    
+    
+    ul {
+    
+    padding: 1.2vw;
+    
+    }
+    
+    
+    ul li {
+    
+    cursor: pointer;
+    
+    position: relative;
+    
+    text-align: center;
+    
+    }
+    
+    
+    li a:is(:link, :active, :visited) {
+    
+    text-decoration: none;
+    
+    position: relative;
+    
+    
+    }
+    
+    
+    li a:is(:link, :active, :visited).active {
+    
+    font-weight: 500;
+    
+    color: aliceblue;
+    
+    background: linear-gradient(to left, aliceblue, aliceblue 100%);
+    
+    background-position: 0 100%;
+    
+    background-size: 100% 2px;
+    
+    background-repeat: repeat-x;
+    
+    
+    }
+    
+    
+    li a::before {
+    
+    font-weight: 500;
+    
+    color: aliceblue;
+    
+    content: "";
+    
+    position: absolute;
+    
+    left: 0;
+    
+    bottom: 0;
+    
+    width: 0%;
+    
+    height: 2px;
+    
+    background-color: aliceblue;
+    
+    transition: width 0.3s ease-out;
+    
+    }
+    
+    
+    li a:hover::before {
+    
+    width: 100%;
+    
+    }
 
 

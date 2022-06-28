@@ -55,6 +55,25 @@ app.get('/findCustomer', (req, res) => {
     }
 })
 
+app.get('/findWaterlevel', (req, res) => {
+
+    var result;
+
+    if (req.query && req.query.Kundennummer) {
+        waterlevel.find({ KundenNr: req.query.Kundennummer})
+            .then((mongoResult) => {
+                res.status(200).send(JSON.stringify(mongoResult));
+                return;
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    } else {
+        res.status(500).send("Please provide a customer number");
+        return;
+    }
+})
+
 
 
 
@@ -91,6 +110,8 @@ app.post('/waterlevel', (req, res) => {
     waterLevel.save()
 
 })
+
+
 
 app.post('/editedUser', (req, res) => {
     console.log(req.body)

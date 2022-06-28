@@ -65,7 +65,7 @@ function loadTable(aData) {
           <td>${element.Geb}</td><td>${element.Straße}</td> <td>${element.HausNr}</td>
           <td>${element.Plz}</td><td>${element.Ort}</td><td>${element.Telefon}
           </td>
-            <td> <button1  class="btn btn-success" type="button" class="btn btn-secondary  px-3">anlegen</button1>
+            <td> <button1  class="btn btn-success" type="button" class="btn btn-secondary  px-3" id="show">anlegen</button1>
           </td>
             <td> <button2  type="button" class="btn btn-primary  px-3"><i class="fas fa-edit" aria-hidden="true"></i></button2>
           </td>`
@@ -123,7 +123,7 @@ $(document).on("click", "button2", function () {
   if (oData != null) {
     modalWrap = document.createElement('div')
     modalWrap.innerHTML = `
-          <div class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal fade" tabindex="-1" role="dialog" id="onClose">
               <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header" bg-light>
@@ -131,7 +131,7 @@ $(document).on("click", "button2", function () {
                         <h5 class="modal-title">Daten bearbeiten</h5>
                         <h8 id="Adresse"> Adresse : ${obj.Adresse} </h8>
                         </div>
-                      <span aria-hidden="true">&times;</span>
+                      
                       </div>
                     <div class="modal-body">
                  
@@ -176,26 +176,29 @@ $(document).on("click", "button2", function () {
                    </div>
               </div>
            <div class="modal-footer" bg-light>
-              <button type="button" onclick="onSave()" class="btn btn-primary">Speichern</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" onclick="onSave()" data-bs-dismiss="modal" class="btn btn-primary">Speichern</button>
+              <buttonclose type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</buttonclose>
            </div>
           </div>
         </div>
       </div>
         `;
+
     document.body.append(modalWrap);
     var modal = new bootstrap.Modal(modalWrap.querySelector('.modal'));
     modal.show();
     document.querySelector(".modal").addEventListener("click", function () {
       document.querySelector(".modal fade").style.display = "none";
-    })
 
+    })
+    
   }
 
 })
 
-
-
+$(document).on("click", "buttonclose", function () {
+      $('#onClose').modal('hide')
+    })
 
 $(document).on("click", "button1", function () {
 
@@ -252,8 +255,8 @@ $(document).on("click", "button1", function () {
                     </form>
                 </div>
              <div class="modal-footer">
-                <button onclick="save()" type="button" class="btn btn-primary">Speichern</button>
-                <button onclick="close()" type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
+                <button onclick="save()" type="button"  data-bs-dismiss="modal" class="btn btn-primary">Speichern</button>
+                <button onclick="close()" type="button"  data-bs-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
              </div>
             </div>
           </div>
@@ -459,8 +462,10 @@ function onSave() {
   var yyyy = today.getFullYear();
   today = String(dd + '.' + mm + '.' + yyyy);
 
-  var oData = {Vorname: Vorname_, Nachname: Nachname(), KundenNr: Kundennummer_, Geb: Geb_, Straße: Straße(), Hausnummer: HausNr(),
-  Plz: Plz(), Ort: Ort(), Telefon: Tel(), Adresse: Adresse, Datum: today}
+  var oData = {
+    Vorname: Vorname_, Nachname: Nachname(), KundenNr: Kundennummer_, Geb: Geb_, Straße: Straße(), Hausnummer: HausNr(),
+    Plz: Plz(), Ort: Ort(), Telefon: Tel(), Adresse: Adresse, Datum: today
+  }
 
   fetch('http://localhost:4000/editedUser', {
     method: 'POST',
