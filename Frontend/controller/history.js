@@ -41,6 +41,7 @@ function navtoLogin(){
 
     const tableBody = document.getElementById('historyTable')
     let dataHTML = '';
+    
   
     for (var element of aData) {
       document.getElementById('username').innerHTML = "Hallo " + element.Vorname + " !"
@@ -59,4 +60,10 @@ function navtoLogin(){
   function onPressImg(){
     location.href = "../views/home.html"
   }
+
+  // function myFunction() {
+  //   var x = document.getElementById("mySelect").value;
+
+
+  // }
  

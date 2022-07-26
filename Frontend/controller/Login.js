@@ -37,6 +37,7 @@ function onNavToMain() {
     if (res && Array.isArray(res) && res.length > 0) {
       //hier in session storage Kundenummer reinschreiben
       sessionStorage.setItem('KundenInfo', JSON.stringify(res))
+      localStorage.setItem('KundenInfo2', JSON.stringify(res))
       location.href = "../views/home.html"
     } else {
       window.alert("Kundenummer leer oder nicht gefunden")

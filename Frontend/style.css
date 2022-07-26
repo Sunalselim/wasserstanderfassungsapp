@@ -55,13 +55,6 @@ height: 100%;
     color: white;
 } */
 
-.footer{
-    position:absolute;
-    bottom: 0px;
-    text-align: center;
-    text-align: start;
-    width: 100%;
-}
 
 .ip1{
     width: 40px;
@@ -197,4 +190,46 @@ height: 100%;
     
     }
 
+    .td{
+        background-color: yellow;
+    }
 
+
+    .carousel-item {
+
+        height: 60vh;
+        
+        }
+        
+        
+        
+        
+        .faucet {
+        
+        width: 37.5%;
+        
+        margin-left: 17vw;
+        
+        }
+        
+        
+        
+        
+        .card-img-top {
+        
+        height: 35vh;
+        
+        }
+
+        .bescheid {
+            background-color: #555555;/* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-left: 20px;
+          }
+        
