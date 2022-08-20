@@ -45,6 +45,10 @@ const waterLevel = new Schema({
     Datum: {
         type: String,
         require: true
+    },
+    Adresse: {
+        type: String,
+        require: true
     }
    
 }, {

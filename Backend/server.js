@@ -89,6 +89,16 @@ app.patch('/:id', async (req, res, next) =>{
     }
 })
 
+app.delete('/deleteHistory/:id', async (req, res, next) =>{
+    try {
+        const id = req.query.id;
+        const deletedHistory = await waterlevel.findByIdAndDelete(id);
+        return res.status(202).json(deletedHistory)
+    } catch (error){
+        res.status(500).json({ message: error.message })
+    }
+})
+
 
 
 // app.get('/findCustomer', (req, res) => {
@@ -119,7 +129,8 @@ app.post('/waterlevel', (req, res) => {
         Ort: req.body.Ort,
         Telefon: req.body.Telefon,
         Wasserstand: req.body.wasserstand,
-        Datum: req.body.Datum
+        Datum: req.body.Datum,
+        Adresse: req.body.Adresse
     })
     waterLevel.save()
 

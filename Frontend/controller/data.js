@@ -385,6 +385,7 @@ function save() {
   if (wasserstand() != 'undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined') {
     oData.wasserstand = wasserstand()
     oData.Datum = String(today);
+    
 
     fetch('http://localhost:4000/waterlevel', {
       method: 'POST',
