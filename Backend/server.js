@@ -75,6 +75,20 @@ app.get('/findWaterlevel', (req, res) => {
 })
 
 
+app.patch('/:id', async (req, res, next) =>{
+    try {
+        const id = req.query.id;
+        const updates = req.body
+        const options = {new: true}
+
+        const result = await allUsers.findByIdAndUpdate(id, updates, options);
+
+        res.send(result)
+    } catch (error){
+        console.log(error.message)
+    }
+})
+
 
 
 // app.get('/findCustomer', (req, res) => {
@@ -112,25 +126,27 @@ app.post('/waterlevel', (req, res) => {
 })
 
 
+// wird genutzt um eine neue Tabelle mit den bearbeiteten Usern zu erstellen. Aktuell
+// werden die Daten jedoch direkt in der allUsers Tabelle geupdatet.
 
-app.post('/editedUser', (req, res) => {
-    console.log(req.body)
-    const editedUser = new editedUser_({
-        Vorname: req.body.Vorname,
-        Nachname: req.body.Nachname,
-        KundenNr: req.body.KundenNr,
-        Geb: req.body.Geb,
-        Straße: req.body.Straße,
-        HausNr: req.body.Hausnummer,
-        Plz: req.body.Plz,
-        Ort: req.body.Ort,
-        Telefon: req.body.Telefon,
-        Adresse: req.body.Adresse,
-        Datum: req.body.Datum
-    })
-    editedUser.save()
+// app.post('/editedUser', (req, res) => {
+//     console.log(req.body)
+//     const editedUser = new editedUser_({
+//         Vorname: req.body.Vorname,
+//         Nachname: req.body.Nachname,
+//         KundenNr: req.body.KundenNr,
+//         Geb: req.body.Geb,
+//         Straße: req.body.Straße,
+//         HausNr: req.body.Hausnummer,
+//         Plz: req.body.Plz,
+//         Ort: req.body.Ort,
+//         Telefon: req.body.Telefon,
+//         Adresse: req.body.Adresse,
+//         Datum: req.body.Datum
+//     })
+//     editedUser.save()
 
-})
+// })
 
 
 app.listen(4000, function () {

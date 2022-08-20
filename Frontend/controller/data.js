@@ -37,17 +37,35 @@ var Telefonummer_;
 var Adresse;
 var Kundennummer_;
 var Geb_;
+var id;
 
 
 
 window.onload = () => {
 
   //hier aus session storage Kundenummer auslesen
-  let KundenInfo = JSON.parse(sessionStorage.getItem('KundenInfo'))
-  if (!KundenInfo) {
-    window.alert("Kundennummer verloren :(");
-  }
-  loadTable(KundenInfo);
+ 
+
+  var Kundennummer = JSON.parse(sessionStorage.getItem('KundenInfo'))[0].KundenNr
+
+
+  // const data = { "Kundennummer": Kundennummer };
+
+  fetch('http://localhost:4000/findCustomer?Kundennummer=' + Kundennummer, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  }).then((result => result.json())).then(res => {
+    // console.log(res)
+
+    if (res && Array.isArray(res) && res.length > 0) {
+      //hier in session storage Kundenummer reinschreiben
+      sessionStorage.setItem('KundenInfo', JSON.stringify(res))
+      loadTable(res)
+    } else {
+      window.alert("Kundenummer leer oder nicht gefunden")
+    }
+  })
+ 
 
 }
 
@@ -63,7 +81,8 @@ function loadTable(aData) {
     document.getElementById('KdNr').innerHTML = "Kundennummer: " + element.KundenNr
     dataHTML += `<tr><td>${element.Adresse}</td><td>${element.Vorname}</td><td>${element.Nachname}</td>
           <td>${element.Geb}</td><td>${element.Straße}</td> <td>${element.HausNr}</td>
-          <td>${element.Plz}</td><td>${element.Ort}</td><td>${element.Telefon}
+          <td>${element.Plz}</td><td>${element.Ort}</td><td>${element.Telefon}</td>
+          <td>${element._id}</td>
           </td>
             <td> <button1  class="btn btn-success" type="button" class="btn btn-secondary  px-3" id="show">anlegen</button1>
           </td>
@@ -73,7 +92,7 @@ function loadTable(aData) {
   }
 
   tableBody.innerHTML = dataHTML;
-
+ 
 
 }
 
@@ -98,7 +117,9 @@ $(document).on("click", "button2", function () {
     Geb: tr[0].cells[3].textContent,
     Vorname: tr[0].cells[1].textContent,
     Telefon: Number(tr[0].cells[8].textContent),
-    Adresse: Number(tr[0].cells[0].textContent)
+    Adresse: Number(tr[0].cells[0].textContent),
+    id: tr[0].cells[9].textContent
+
 
 
   }
@@ -110,8 +131,9 @@ $(document).on("click", "button2", function () {
   Ort_ = obj.Ort;
   Telefonummer_ = obj.Telefon;
   Kundennummer_ = obj.KundenNr;
-  Vorname_ = obj.Vorname
-  Geb_ = obj.Geb
+  Vorname_ = obj.Vorname;
+  Geb_ = obj.Geb;
+  id = obj.id
 
   sessionStorage.setItem('clickedData', JSON.stringify(obj))
 
@@ -463,17 +485,33 @@ function onSave() {
   today = String(dd + '.' + mm + '.' + yyyy);
 
   var oData = {
-    Vorname: Vorname_, Nachname: Nachname(), KundenNr: Kundennummer_, Geb: Geb_, Straße: Straße(), Hausnummer: HausNr(),
+    Vorname: Vorname_, Nachname: Nachname(), KundenNr: Kundennummer_, Geb: Geb_, Straße: Straße(), HausNr: HausNr(),
     Plz: Plz(), Ort: Ort(), Telefon: Tel(), Adresse: Adresse, Datum: today
   }
+  // Diese API wird aktuell nicht genutzt. Das API erstellt eine neue Tabelle mit den 
+  // bearbeiteten Daten der User
 
-  fetch('http://localhost:4000/editedUser', {
-    method: 'POST',
+  // fetch('http://localhost:4000/editedUser', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify(oData)
+  // }).then((res) => {
+  //   console.log(res)
+  // })
+
+
+
+  // Es wird ein update zu den bearbeiteten Usern in der allUsers Tabelle erzeugt
+
+  fetch('http://localhost:4000/:id?id=' + JSON.parse(sessionStorage.getItem('clickedData')).id, {
+    method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(oData)
   }).then((res) => {
     console.log(res)
   })
+
+  location.reload()
 
 }
 
