@@ -11,7 +11,7 @@ window.onload = () => {
   }
 
 }
-
+var response;
 function getWaterlevelsFromUser() {
 
   var Kundennummer = JSON.parse(sessionStorage.getItem('KundenInfo'))[0].KundenNr
@@ -26,7 +26,7 @@ function getWaterlevelsFromUser() {
 
     if (res && Array.isArray(res) && res.length > 0) {
       loadTable(res)
-
+      response = res
 
     } else {
 
@@ -39,10 +39,10 @@ function getWaterlevelsFromUser() {
 
 getWaterlevelsFromUser()
 
-var count = 0;
+
 
 function loadTable(aData) {
-
+  var count = 0;
   const tableBody = document.getElementById('historyTable')
   let dataHTML = '';
 
@@ -156,6 +156,85 @@ function deleteItem() {
 $(document).on("click", "buttonclose", function () {
   $('#onClose').modal('hide')
 })
+
+
+function resetFilter() {
+  var count = 0;
+  var filteredArray = response
+
+  const tableBody = document.getElementById('historyTable')
+  let dataHTML = '';
+
+
+  for (var element of filteredArray) {
+    document.getElementById('username').innerHTML = "Hallo " + element.Vorname + " !"
+    document.getElementById('KdNr').innerHTML = "Kundennummer: " + element.KundenNr
+    dataHTML += `<tr><td>${count += 1}</td><td>${element.Adresse}</td></td><td>${element.Vorname}</td><td>${element.Nachname}</td><td>${element.Geb}</td>
+              <td>${element.Straße}</td><td>${element.HausNr}</td> <td>${element.Plz}</td>
+              <td>${element.Ort}</td><td>${element.Telefon}</td><td>${element.Datum}</td> <td>${element.Wasserstand}</td><td>${element._id}</td> 
+              <td><deleteHistorybutton type="button" class="btn btn-danger  px-3"><i class="fa fa-trash" aria-hidden="true"></i></deleteHistorybutton> </td>`
+
+  }
+
+  tableBody.innerHTML = dataHTML;
+
+
+}
+
+
+function formatDate(input) {
+  const date = input;
+  const [year, month, day] = date.split('-');
+
+  return [day, month, year].join('.');
+
+
+}
+
+
+function filterHistory(){
+  var date = document.getElementById('date').value
+  var filtreredHistory = response.filter(element=> element.Datum === formatDate(date))
+   
+  if (filtreredHistory.length != 0){
+
+    var count = 0;
+  
+    const tableBody = document.getElementById('historyTable')
+    let dataHTML = '';
+  
+  
+    for (var element of filtreredHistory) {
+      document.getElementById('username').innerHTML = "Hallo " + element.Vorname + " !"
+      document.getElementById('KdNr').innerHTML = "Kundennummer: " + element.KundenNr
+      dataHTML += `<tr><td>${count += 1}</td><td>${element.Adresse}</td></td><td>${element.Vorname}</td><td>${element.Nachname}</td><td>${element.Geb}</td>
+                <td>${element.Straße}</td><td>${element.HausNr}</td> <td>${element.Plz}</td>
+                <td>${element.Ort}</td><td>${element.Telefon}</td><td>${element.Datum}</td> <td>${element.Wasserstand}</td><td>${element._id}</td> 
+                <td><deleteHistorybutton type="button" class="btn btn-danger  px-3"><i class="fa fa-trash" aria-hidden="true"></i></deleteHistorybutton> </td>`
+  
+    }
+  
+    tableBody.innerHTML = dataHTML;
+  }else{
+    var count = 0;
+  
+    const tableBody = document.getElementById('historyTable')
+    let dataHTML = '';
+
+  
+    tableBody.innerHTML = dataHTML;
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

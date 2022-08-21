@@ -8,7 +8,8 @@
     integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="../controller/jquery-3.6.0.min.js"></script>
   <script src="../controller/history.js"></script>
   <script defer src="../controller/activePage.js"></script>
@@ -16,14 +17,15 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #34568B">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #363C44">
     <div class="container-fluid">
-        <a href="#" class="navbar-brand">
-            <img onclick="onPressImg()"
-              src="https://www.vgzwland.de/downloads-und-grafiken/bilder/logo-vg-zw-land-quadratisch.svg?cid=c.2c" width="60"
-              height="60" class="d-inline-block" />
-          </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a href="#" class="navbar-brand">
+        <img onclick="onPressImg()"
+          src="https://www.vgzwland.de/downloads-und-grafiken/bilder/logo-vg-zw-land-quadratisch.svg?cid=c.2c"
+          width="60" height="60" class="d-inline-block" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -42,51 +44,81 @@
           </li>
         </ul>
       </div>
-      <div class="box1"><p id="KdNr" style="color: aliceblue;"></p></div>
-     <div class="box2"><p id="username" class="username"> </p></div>
-      <div  class="box3"><i style="color: aliceblue; margin-bottom: 20px;" class="fa fa-user" aria-hidden="true"></i></div>
+      <div class="box1">
+        <p id="KdNr" style="color: aliceblue;"></p>
+      </div>
+      <div class="box2">
+        <p id="username" class="username"> </p>
+      </div>
+      <div class="box3"><i style="color: aliceblue; margin-bottom: 20px;" class="fa fa-user" aria-hidden="true"></i>
+      </div>
     </div>
-</nav>
-<!-- <br>
+  </nav>
+  <!-- <br>
 <select id="mySelect" onchange="myFunction()">
   <option value="Mustermannstraße">Mustermannstraße</option>
   <option value="Musterallee">Musterallee</option>
 </select>
 <br> -->
-    <br>
-    <table class="table table-striped table-bordered" responsive="true" width="100%">
-      <thead width="100%">
-        <tr>
-          <th scope="col">Nr</th>
-          <th scope="col">Adresse</th>
-          <th scope="col">Vorname</th>
-          <th scope="col">Nachname</th>
-          <th scope="col">Geburtsdatum</th>
-          <th scope="col">Straße</th>
-          <th scope="col">Hausnr.</th>
-          <th scope="col">PLZ.</th>
-          <th scope="col">Ort</th>
-          <th scope="col">Telefonnummer</th>
-          <th scope="col">Datum</th>
-          <th scope="col">Wasserstand</th>
-          <th scope="col">Objekt_ID</th>
-        </tr>
-      </thead>
-      <tbody id="historyTable">
-      </tbody>
-    </table>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"></script>
-  </body>
+  <!-- <input id="input">
+<button onclick="filterTable()">filter</button>
+<button onclick="resetFilter()">Filter zurücksetzen</button> -->
 
-  <footer class="footer fixed-bottom" >
-    <div class="text-center p-3" style="background-color: #c7c7c7;">
-      <button onclick="navtoLogin()" style="float: left; margin-top: -0.45%; " type="button" class="btn btn-primary" ><i class="fas fa-sign-out-alt"></i> Abmelden</button>
-      <a style="align-items: center;" class="text-white" href="https://www.vgzwland.de/">Offizielle Webseite von
-        Zweibrücken</a>
-    </div>
-  </footer>
+<label style=" position: absolute;
+top: 97px; left: 940px;">Datum: </label>
+  <div style="background-color: #B9B9B9; height: 50px;">
+
+    <label style=" position: absolute;
+    top: 97px; left: 765px;">Ort:</label>
+<select name="cars" id="cars"  style=" position: absolute;
+top: 97px; left: 800px;">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+    <input id="date" type="date" style=" position: absolute;
+    top: 97px; left: 1000px;" />
+    <button onclick="filterHistory()" class="btn btn-light" style=" position: absolute;
+ top: 97px; left: 1210px;">Filtern</button>
+    <button onclick="resetFilter()" class="btn btn-dark" style=" position: absolute;
+top: 97px; left: 1300px;">zurücksetzen</button>
+
+  </div>
+  <table class="table table-striped table-bordered" responsive="true" width="100%">
+    <thead width="100%">
+      <tr>
+        <th scope="col">Nr</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Vorname</th>
+        <th scope="col">Nachname</th>
+        <th scope="col">Geburtsdatum</th>
+        <th scope="col">Straße</th>
+        <th scope="col">Hausnr.</th>
+        <th scope="col">PLZ.</th>
+        <th scope="col">Ort</th>
+        <th scope="col">Telefonnummer</th>
+        <th scope="col">Datum</th>
+        <th scope="col">Wasserstand</th>
+        <th scope="col">Objekt_ID</th>
+      </tr>
+    </thead>
+    <tbody id="historyTable">
+    </tbody>
+  </table>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+<footer class="footer fixed-bottom">
+  <div class="text-center p-3" style="background-color: #c7c7c7;">
+    <button onclick="navtoLogin()" style="float: left; margin-top: -0.45%; " type="button" class="btn btn-primary"><i
+        class="fas fa-sign-out-alt"></i> Abmelden</button>
+    <a style="align-items: center;" class="text-white" href="https://www.vgzwland.de/">Offizielle Webseite von
+      Zweibrücken</a>
+  </div>
+</footer>
