@@ -8,8 +8,9 @@ window.onload = () => {
     var test = document.getElementById('username')
     document.getElementById('KdNr').innerHTML = "Kundennummer: " + element.KundenNr
     test.innerHTML = "Hallo " + element.Vorname + " !"
-  }
 
+  }
+  fillDropdown()
 }
 var response;
 function getWaterlevelsFromUser() {
@@ -177,9 +178,36 @@ function resetFilter() {
   }
 
   tableBody.innerHTML = dataHTML;
-
-
+  document.getElementById('Citys').value =""
+  document.getElementById('date').value =""
 }
+
+
+function fillDropdown() {
+  
+  select = document.getElementById('Citys');
+  var array = JSON.parse(sessionStorage.getItem('KundenInfo'))
+
+  const uniqueIds = [];
+
+  const unique = array.filter(element => {
+    const isDuplicate = uniqueIds.includes(element.Ort);
+
+    if (!isDuplicate) {
+      uniqueIds.push(element.Ort);
+
+      return true;
+    }
+
+    return false;
+  });
+
+  for (var element of unique) {
+    select.add(new Option([element.Ort]));
+
+  };
+}
+
 
 
 function formatDate(input) {
@@ -192,39 +220,64 @@ function formatDate(input) {
 }
 
 
-function filterHistory(){
-  var date = document.getElementById('date').value
-  var filtreredHistory = response.filter(element=> element.Datum === formatDate(date))
-   
-  if (filtreredHistory.length != 0){
+var filter;
+function Filter(){
 
-    var count = 0;
-  
-    const tableBody = document.getElementById('historyTable')
-    let dataHTML = '';
-  
-  
-    for (var element of filtreredHistory) {
-      document.getElementById('username').innerHTML = "Hallo " + element.Vorname + " !"
-      document.getElementById('KdNr').innerHTML = "Kundennummer: " + element.KundenNr
-      dataHTML += `<tr><td>${count += 1}</td><td>${element.Adresse}</td></td><td>${element.Vorname}</td><td>${element.Nachname}</td><td>${element.Geb}</td>
-                <td>${element.Straße}</td><td>${element.HausNr}</td> <td>${element.Plz}</td>
-                <td>${element.Ort}</td><td>${element.Telefon}</td><td>${element.Datum}</td> <td>${element.Wasserstand}</td><td>${element._id}</td> 
-                <td><deleteHistorybutton type="button" class="btn btn-danger  px-3"><i class="fa fa-trash" aria-hidden="true"></i></deleteHistorybutton> </td>`
-  
+  var selectedCity = document.getElementById("Citys").value
+  var selectedDate = document.getElementById("date").value
+
+  if(selectedCity != "" && selectedDate != ""){
+    filter = response.filter(element => element.Datum == formatDate(selectedDate) && element.Ort == selectedCity)
+  }else{
+    if(selectedCity != ""){
+      filter = response.filter(element => element.Ort === selectedCity)
+    }else if(selectedDate != ""){
+      filter = response.filter(element => element.Datum == formatDate(selectedDate))
     }
   
-    tableBody.innerHTML = dataHTML;
-  }else{
-    var count = 0;
-  
-    const tableBody = document.getElementById('historyTable')
-    let dataHTML = '';
-
-  
-    tableBody.innerHTML = dataHTML;
   }
+
+  if (filter.length != 0) {
+ 
+   var count = 0;
+ 
+   const tableBody = document.getElementById('historyTable')
+   let dataHTML = '';
+ 
+ 
+   for (var element of filter) {
+     document.getElementById('username').innerHTML = "Hallo " + element.Vorname + " !"
+     document.getElementById('KdNr').innerHTML = "Kundennummer: " + element.KundenNr
+     dataHTML += `<tr><td>${count += 1}</td><td>${element.Adresse}</td></td><td>${element.Vorname}</td><td>${element.Nachname}</td><td>${element.Geb}</td>
+               <td>${element.Straße}</td><td>${element.HausNr}</td> <td>${element.Plz}</td>
+               <td>${element.Ort}</td><td>${element.Telefon}</td><td>${element.Datum}</td> <td>${element.Wasserstand}</td><td>${element._id}</td> 
+               <td><deleteHistorybutton type="button" class="btn btn-danger  px-3"><i class="fa fa-trash" aria-hidden="true"></i></deleteHistorybutton> </td>`
+ 
+   }
+ 
+   tableBody.innerHTML = dataHTML;
+ } else {
+ 
+   const tableBody = document.getElementById('historyTable')
+   let dataHTML = '';
+ 
+ 
+   tableBody.innerHTML = dataHTML;
+ }
+
+ 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

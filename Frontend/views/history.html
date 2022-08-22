@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -65,24 +64,24 @@
 <button onclick="resetFilter()">Filter zurücksetzen</button> -->
 
 <label style=" position: absolute;
-top: 97px; left: 940px;">Datum: </label>
+top: 97px; left: 1040px;">Datum: </label>
   <div style="background-color: #B9B9B9; height: 50px;">
 
     <label style=" position: absolute;
-    top: 97px; left: 765px;">Ort:</label>
-<select name="cars" id="cars"  style=" position: absolute;
-top: 97px; left: 800px;">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
+    top: 97px; left: 865px;">Ort:</label>
+
+<select   style=" position: absolute;
+top: 97px; left: 900px;" id="Citys">
+  <option disabled selected value> Ort auswählen </option></select>
+    
     <input id="date" type="date" style=" position: absolute;
-    top: 97px; left: 1000px;" />
-    <button onclick="filterHistory()" class="btn btn-light" style=" position: absolute;
- top: 97px; left: 1210px;">Filtern</button>
-    <button onclick="resetFilter()" class="btn btn-dark" style=" position: absolute;
-top: 97px; left: 1300px;">zurücksetzen</button>
+    top: 97px; left: 1100px;" />
+
+        <button onclick="Filter()" class="btn btn-light" style=" position: absolute;
+        top: 97px; left: 1260px;"> <i class='fa fa-filter'></i></button>
+
+    <button onclick="resetFilter()" class="btn btn-light" style=" position: absolute;
+top: 97px; left: 1320px;"> <i class='fa-solid fa-filter-circle-xmark red-color'></i></button>
 
   </div>
   <table class="table table-striped table-bordered" responsive="true" width="100%">
