@@ -10,7 +10,9 @@ window.onload = () => {
     test.innerHTML = "Hallo " + element.Vorname + " !"
 
   }
+  getWaterlevelsFromUser()
   fillDropdown()
+
 }
 var response;
 function getWaterlevelsFromUser() {
@@ -28,6 +30,7 @@ function getWaterlevelsFromUser() {
     if (res && Array.isArray(res) && res.length > 0) {
       loadTable(res)
       response = res
+      sessionStorage.setItem('waterlevel', JSON.stringify(res))
 
     } else {
 
@@ -38,7 +41,7 @@ function getWaterlevelsFromUser() {
 
 }
 
-getWaterlevelsFromUser()
+
 
 
 
@@ -188,7 +191,7 @@ function resetFilter() {
 function fillDropdown() {
   
   select = document.getElementById('Citys');
-  var array = JSON.parse(sessionStorage.getItem('KundenInfo'))
+  var array = JSON.parse(sessionStorage.getItem("waterlevel"))
 
   const uniqueIds = [];
 
@@ -339,6 +342,10 @@ if(selectedCity == "" && selectedDate == ""){
  }
 
  
+}
+
+function PageReload(){
+  location.reload()
 }
 
 

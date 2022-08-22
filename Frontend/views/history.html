@@ -53,15 +53,8 @@
       </div>
     </div>
   </nav>
-  <!-- <br>
-<select id="mySelect" onchange="myFunction()">
-  <option value="Mustermannstraße">Mustermannstraße</option>
-  <option value="Musterallee">Musterallee</option>
-</select>
-<br> -->
-  <!-- <input id="input">
-<button onclick="filterTable()">filter</button>
-<button onclick="resetFilter()">Filter zurücksetzen</button> -->
+  <button title="Orte aktualisieren" onclick="PageReload()" class="btn btn-light" style=" position: absolute;
+  top: 97px; left: 1383px;"> <i class="fas fa-redo-alt"></i></button>
 
 <label style=" position: absolute;
 top: 97px; left: 1040px;">Datum: </label>
@@ -74,13 +67,13 @@ top: 97px; left: 1040px;">Datum: </label>
 top: 97px; left: 900px;" id="Citys">
   <option disabled selected value> Ort auswählen </option></select>
     
-    <input id="date" type="date" style=" position: absolute;
+    <input  id="date" type="date" style=" position: absolute;
     top: 97px; left: 1100px;" />
 
-        <button onclick="Filter()" class="btn btn-light" style=" position: absolute;
+        <button title="Einträge Filtern" onclick="Filter()" class="btn btn-light" style=" position: absolute;
         top: 97px; left: 1260px;"> <i class='fa fa-filter'></i></button>
 
-    <button onclick="resetFilter()" class="btn btn-light" style=" position: absolute;
+    <button  title="Filter zurücksetzen" onclick="resetFilter()" class="btn btn-light" style=" position: absolute;
 top: 97px; left: 1320px;"> <i class='fa-solid fa-filter-circle-xmark red-color'></i></button>
 
   </div>

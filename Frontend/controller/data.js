@@ -184,7 +184,7 @@ $(document).on("click", "button2", function () {
   
                     <div class="form-group">
                     <label for="exampleInputPassword1">PLZ:</label>
-                    <input oninput="Plz(this)" type="text" class="form-control" id="ip5" value="${obj.Plz}" >
+                    <input oninput="Plz(this)" type="text" class="form-control" id="ip5" value="${obj.Plz}">
                     </div>
   
                    <div class="form-group">
@@ -255,7 +255,7 @@ $(document).on("click", "button1", function () {
                       <div class="modal-header">
                         <div class="div" width="200px">
                           <h3 class="modal-title">Wasserstand anlegen für: </h3>
-                          <p class="modal-title2">${obj.Straße} ${obj.HausNr}</p>
+                          <p class="modal-title2">${obj.Straße} ${obj.HausNr} ,  ${obj.Plz} ${obj.Ort}</p>
                         </div>
                         </div>
                       <div class="modal-body">
@@ -385,7 +385,7 @@ function save() {
   if (wasserstand() != 'undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined') {
     oData.wasserstand = wasserstand()
     oData.Datum = String(today);
-    
+   
 
     fetch('http://localhost:4000/waterlevel', {
       method: 'POST',
