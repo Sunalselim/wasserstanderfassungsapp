@@ -30,27 +30,39 @@
                                     <form>
                                         <p>Hier anmelden:</p>
 
-                                        <div class="form-outline mb-4">
-                                            <input type="text" id="Kundennummer" class="form-control"
-                                                placeholder="8-Stellige Nummer hier eingeben" />
-                                            <label class="form-label" for="Kundennummer">Kundennummer</label>
-                                        </div>
 
-                                        <!-- <div class="form-outline mb-4">
-                                            <input placeholder="Passwort hier eingeben" type="password"
-                                                class="form-control" id="Password" />
-                                            <label class="form-label" for="form2Example22">Passwort</label>
-                                        </div> -->
+                                        <!-- <form class="row g-3 needs-validation" novalidate>          
+                                                <label class="form-label" for="Kundennummer">Kundennummer</label>
+                                              <input  id="validationCustom01"  type="text" id="Kundennummer" class="form-control"
+                                              placeholder="8-Stellige Nummer hier eingeben"  required>    
+                                            </div>
+                                            <div class="text-center pt-1 mb-5 pb-1">
+                                                <button onclick="onNavToMain()"class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                                    type="submit">Anmelden</button>
+                                          </form>
+                                    </form> -->
 
-                                        <div class="text-center pt-1 mb-5 pb-1">
-                                            <button onclick="onNavToMain()"class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
-                                                type="button">Anmelden</button>
-                                        </div>
-                                    </form>
-
+                                        <form class="row g-3 needs-validation" novalidate>
+                                            <label 
+                                                for="Kundennummer">Kundennummer</label>
+                                            <input type="text" class="form-control" id="Kundennummer"
+                                                placeholder="Kundennummer hier eingeben" required>
+                                            <div class="col-sm-10">
+                                                <small  id="passwordHelp" class="">
+                                                   Die Kundennummer besteht aus 8 Zahlen
+                                                </small>
+                                            </div>
+                                            <div class="text-center pt-1 mb-5 pb-1">
+                                                <button onclick="onNavToMain()"
+                                                    class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                                    type="button">Anmelden</button>
+                                            </div>
+                                        </form>
                                 </div>
+
                             </div>
-                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2" style="background-color: #363C44;">
+                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2"
+                                style="background-color: #363C44;">
                                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                                     <h4 class="mb-4">Was kann ich hier machen?</h4>
                                     <p class="small mb-0">Auf dieser Seite können Sie ganz bequem Ihren Wasserstand

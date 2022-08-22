@@ -22,10 +22,12 @@
 // }
 
 
+
 function onNavToMain() {
 
-  var Kundennummer = Number(document.getElementById('Kundennummer').value)
 
+  var Kundennummer = Number(document.getElementById('Kundennummer').value)
+  
   // const data = { "Kundennummer": Kundennummer };
 
   fetch('http://localhost:4000/findCustomer?Kundennummer=' + Kundennummer, {
@@ -40,10 +42,13 @@ function onNavToMain() {
       localStorage.setItem('KundenInfo2', JSON.stringify(res))
       location.href = "../views/home.html"
     } else {
-      window.alert("Kundenummer leer oder nicht gefunden")
+     console.log("Kundennummer nicht gefunden")
+     document.getElementById("Kundennummer").className = 'form-control is-invalid'
+     document.getElementById("passwordHelp").className = 'text-danger'
     }
   })
 
 
 
 }
+

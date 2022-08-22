@@ -44,7 +44,7 @@ var id;
 window.onload = () => {
 
   //hier aus session storage Kundenummer auslesen
- 
+
 
   var Kundennummer = JSON.parse(sessionStorage.getItem('KundenInfo'))[0].KundenNr
 
@@ -65,7 +65,7 @@ window.onload = () => {
       window.alert("Kundenummer leer oder nicht gefunden")
     }
   })
- 
+
 
 }
 
@@ -92,7 +92,7 @@ function loadTable(aData) {
   }
 
   tableBody.innerHTML = dataHTML;
- 
+
 
 }
 
@@ -213,15 +213,15 @@ $(document).on("click", "button2", function () {
       document.querySelector(".modal fade").style.display = "none";
 
     })
-    
+
   }
 
 })
 
 $(document).on("click", "buttonclose", function () {
-      $('#onClose').modal('hide')
-    })
-
+  $('#onClose').modal('hide')
+})
+var modal;
 $(document).on("click", "button1", function () {
 
   let tr = $(this).closest('tr');
@@ -273,11 +273,14 @@ $(document).on("click", "button1", function () {
                           <input oninput="maxLengthCheck8(this)" class="ip2" type="number" id="ip8" name="username" maxlength="1" max="9" min="0" value="0">
                         m<sup>3</sup>
                         </div>
+                        <small  id="waterlevelText" class="">
+                                                  
+                                                </small>
                       </div>
                     </form>
                 </div>
              <div class="modal-footer">
-                <button onclick="save()" type="button"  data-bs-dismiss="modal" class="btn btn-primary">Speichern</button>
+                <button onclick="save()" type="button"  data-toggle="modal" data-backdrop="static" data-keyboard="false" class="btn btn-primary">Speichern</button>
                 <button onclick="close()" type="button"  data-bs-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
              </div>
             </div>
@@ -285,7 +288,7 @@ $(document).on("click", "button1", function () {
         </div>
           `;
   document.body.append(modalWrap);
-  var modal = new bootstrap.Modal(modalWrap.querySelector('.modal'));
+   modal = new bootstrap.Modal(modalWrap.querySelector('.modal'));
   modal.show();
   document.querySelector(".modal").addEventListener("click", function () {
     document.querySelector(".modal fade").style.display = "none";
@@ -382,10 +385,10 @@ function save() {
   today = dd + '.' + mm + '.' + yyyy;
 
   var oData = JSON.parse(sessionStorage.getItem('clickedData'))
-  if (wasserstand() != 'undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined') {
+  if (wasserstand() != '00000000') {
     oData.wasserstand = wasserstand()
     oData.Datum = String(today);
-   
+
 
     fetch('http://localhost:4000/waterlevel', {
       method: 'POST',
@@ -394,8 +397,22 @@ function save() {
     }).then((res) => {
       console.log(res)
     })
+   
+    modal.hide()
+ 
   } else {
-    alert("Bitte geben Sie vor dem absenden Ihren Wasserstand ein")
+    
+    if(document.getElementById('waterlevelText').innerText == ""){
+      document.getElementById('waterlevelText').innerText = "Bitte geben Sie Ihren Wasserstand ein!"
+      document.getElementById('waterlevelText').className = "text-danger"
+    }else{
+      const oldNode = document.querySelector("small");
+oldNode.remove();
+document.getElementById('waterlevelText').innerText = "Bitte geben Sie Ihren Wasserstand ein!"
+      document.getElementById('waterlevelText').className = "text-danger"
+    }
+
+    
   }
 
 }
