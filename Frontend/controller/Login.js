@@ -41,6 +41,7 @@ function onNavToMain() {
       sessionStorage.setItem('KundenInfo', JSON.stringify(res))
       localStorage.setItem('KundenInfo2', JSON.stringify(res))
       location.href = "../views/home.html"
+      today()
     } else {
      console.log("Kundennummer nicht gefunden")
      document.getElementById("Kundennummer").className = 'form-control is-invalid'
@@ -51,4 +52,18 @@ function onNavToMain() {
 
 
 }
+var array = []
+function today (){
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  today = dd + '.' + mm + '.' + yyyy + " " +  time
+  
+  array.push(today)
+  sessionStorage.setItem("today", JSON.stringify(array))
+  
+}
+
 
