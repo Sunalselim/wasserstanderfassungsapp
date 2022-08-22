@@ -179,8 +179,10 @@ function resetFilter() {
 
   tableBody.innerHTML = dataHTML;
   document.getElementById('Citys').value =""
-  document.getElementById('date').value =""
+  document.getElementById('date').value = ""
 }
+
+
 
 
 function fillDropdown() {
@@ -225,7 +227,41 @@ function Filter(){
 
   var selectedCity = document.getElementById("Citys").value
   var selectedDate = document.getElementById("date").value
+  
+if(selectedCity == "" && selectedDate == ""){
+  var modalWrap = null;
+  if (modalWrap != null) {
+    modalWrap.remove();
+  }
+ 
+    modalWrap = document.createElement('div')
+    modalWrap.innerHTML = `
+            <div class="modal fade" tabindex="-1" role="dialog" id="onClose">
+                <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header" bg-light>
+                        <h2 class="modal-title">Bitte filtern Sie zuerst</h2>
+                        <i class="fa fa-exclamation-circle fa-2x" style="color:#ffae42"></i>
+                        </div>
+                      <div class="list-group">
+                </div>
+             <div class="modal-footer" bg-light>
+                <buttonclose type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</buttonclose>
+             </div>
+            </div>
+          </div>
+        </div>
+          `;
 
+    document.body.append(modalWrap);
+    var modal = new bootstrap.Modal(modalWrap.querySelector('.modal'));
+    modal.show();
+    document.querySelector(".modal").addEventListener("click", function () {
+      document.querySelector(".modal fade");
+
+    })
+  filter = response
+}else{
   if(selectedCity != "" && selectedDate != ""){
     filter = response.filter(element => element.Datum == formatDate(selectedDate) && element.Ort == selectedCity)
   }else{
@@ -236,6 +272,8 @@ function Filter(){
     }
   
   }
+}
+ 
 
   if (filter.length != 0) {
  
@@ -257,12 +295,47 @@ function Filter(){
  
    tableBody.innerHTML = dataHTML;
  } else {
- 
+  
    const tableBody = document.getElementById('historyTable')
    let dataHTML = '';
  
  
    tableBody.innerHTML = dataHTML;
+
+
+   var modalWrap = null;
+  if (modalWrap != null) {
+    modalWrap.remove();
+  }
+ 
+    modalWrap = document.createElement('div')
+    modalWrap.innerHTML = `
+            <div class="modal fade" tabindex="-1" role="dialog" id="onClose">
+                <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header" bg-light>
+                        <h2 class="modal-title">Es wurde kein Eintrag für den ${ formatDate(selectedDate)} gefunden</h2>
+                        <i class="fa fa-exclamation-circle fa-2x" style="color:#ffae42"></i>
+                        </div>
+                      <div class="list-group">
+                </div>
+             <div class="modal-footer" bg-light>
+                <buttonclose type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</buttonclose>
+             </div>
+            </div>
+          </div>
+        </div>
+          `;
+
+    document.body.append(modalWrap);
+    var modal = new bootstrap.Modal(modalWrap.querySelector('.modal'));
+    modal.show();
+    document.querySelector(".modal").addEventListener("click", function () {
+      document.querySelector(".modal fade");
+
+    })
+
+  
  }
 
  
