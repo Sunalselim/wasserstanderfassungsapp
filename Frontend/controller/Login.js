@@ -52,8 +52,9 @@ function onNavToMain() {
 
 
 }
-var array = []
+
 function today (){
+  let cart = JSON.parse(sessionStorage.getItem("today")) || [];
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -61,8 +62,9 @@ function today (){
   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   today = dd + '.' + mm + '.' + yyyy + " " +  time
   
-  array.push(today)
-  sessionStorage.setItem("today", JSON.stringify(array))
+  cart.push(today)
+  sessionStorage.setItem("today", JSON.stringify(cart))
+  
   
 }
 
