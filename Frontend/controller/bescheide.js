@@ -81,8 +81,8 @@ function test(e){
     var doc = new jsPDF('p', 'pt', 'letter')
     // Supply data via script
     var body = [
-               ['Vorname', 'Nachname', 'KundenNr', 'Geburtsdatum', 'TelefonNr',  'Straße', 'Nr', 'Ort', 'PLZ', 'Wasserstand'],
-               [BescheidArray.Vorname, BescheidArray.Nachname, BescheidArray.KundenNr, BescheidArray.Geb, BescheidArray.Telefon, BescheidArray.Straße, BescheidArray.HausNr, BescheidArray.Ort, BescheidArray.Plz, BescheidArray.Wasserstand],
+               ['Vorname', 'Nachname', 'KundenNr', 'TelefonNr',  'Straße', 'Nr', 'Ort', 'PLZ', 'Wasserstand'],
+               [BescheidArray.Vorname, BescheidArray.Nachname, BescheidArray.KundenNr, BescheidArray.Telefon, BescheidArray.Straße, BescheidArray.HausNr, BescheidArray.Ort, BescheidArray.Plz, BescheidArray.Wasserstand],
                ]
     // generate auto table with body
     var y = 10;
@@ -97,7 +97,7 @@ function test(e){
     // save the data to this file
 
     doc.text('Kontakt Stadtwerke Zweibrücken:', 50, 300)
-    doc.setFontSize(10);
+        doc.setFontSize(10);
     doc.text('Straße: Musterstraße 16',  50, 330)
     doc.text('Telefon: 787328372',  50, 360)
     doc.text('E-Mail: zweibrücken@gmail.com',  50, 390)
