@@ -13,8 +13,7 @@ arr.pop()
                 <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header" bg-light>
-                        <h2 class="modal-title">Ihre Letzte Anmeldung auf der Seite war am ${arr[arr.length-1] } </h2>
-                        <i class="fa fa-exclamation-circle fa-2x" style="color:#ffae42"></i>
+                        <h2 class="modal-title">Ihre Letzte Anmeldung auf der Seite war am ${arr[arr.length-1]} </h2>
                         </div>
                       <div class="list-group">
                 </div>

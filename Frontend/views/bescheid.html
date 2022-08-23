@@ -4,7 +4,9 @@
 <head>
     <script src="../controller/bescheide.js"></script>
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
-    <script src="jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="   https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+ 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
@@ -60,7 +62,9 @@
     <br>
 
     <h1 id="nachname"></h1>
-    <button class="bescheid" onclick="createPDF()">Bescheid abrufen</button>
+    <!-- <button class="bescheid" onclick="createPDF()">Bescheid abrufen</button> -->
+
+<div class="row" id="container"></div>
 
 </body>
 
