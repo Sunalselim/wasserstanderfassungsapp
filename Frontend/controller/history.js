@@ -317,7 +317,7 @@ if(selectedCity == "" && selectedDate == ""){
                 <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header" bg-light>
-                        <h2 class="modal-title">Es wurde kein Eintrag für den ${ formatDate(selectedDate)} gefunden</h2>
+                        <h2 class="modal-title">Es wurde kein Eintrag für den ${ formatDate(selectedDate)} gefunden. Bitte setzen Sie den Filter zurück</h2>
                         <i class="fa fa-exclamation-circle fa-2x" style="color:#ffae42"></i>
                         </div>
                       <div class="list-group">
