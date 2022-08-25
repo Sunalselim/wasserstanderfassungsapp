@@ -43,7 +43,7 @@ app.get('/findCustomer', (req, res) => {
     if (req.query && req.query.Kundennummer) {
         allUsers.find({ KundenNr: req.query.Kundennummer})
             .then((mongoResult) => {
-                res.status(200).send(JSON.stringify(mongoResult));
+                res.status(200).send(mongoResult);
                 return;
             })
             .catch((err) => {
